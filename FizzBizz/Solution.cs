@@ -23,7 +23,7 @@ namespace FizzBizz
                     _ => numbers[i].ToString(),
                 };
 
-                if (ruleNumber > 0)
+                if (ruleNumber > 0 && !string.IsNullOrEmpty(ruleMessage))
                 {
                     if (numbers[i] % ruleNumber == 0)
                     {
