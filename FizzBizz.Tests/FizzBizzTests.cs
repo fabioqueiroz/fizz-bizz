@@ -14,7 +14,8 @@ namespace FizzBizz.Tests
             var numbers = new int[] { 2, 3, 4, 5, 7 };
 
             // Act
-            var result = Solution.OutputNumbers(numbers);
+            //var result = Solution.OutputNumbers(numbers);
+            var result = Solution.OutputNumbers2(numbers);
 
             //Assert
             Assert.Contains(nameof(OutputEnum.Fizz), result);
@@ -29,7 +30,8 @@ namespace FizzBizz.Tests
             var numbers = new int[] { 13 };
 
             // Act
-            var result = Solution.OutputNumbers(numbers, 13, "Thirteen");
+            //var result = Solution.OutputNumbers(numbers, 13, "Thirteen");
+            var result = Solution.OutputNumbers2(numbers, 13, "Thirteen");
 
             //Assert
             Assert.Contains("Thirteen", result);

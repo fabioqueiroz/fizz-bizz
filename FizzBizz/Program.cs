@@ -8,6 +8,7 @@ namespace FizzBizz
         {
             var numbers = new int[] { 2, 3, 4, 5, 7, 13 };
             Console.WriteLine(Solution.OutputNumbers(numbers, 13, "Thirteen"));
+            Console.WriteLine(Solution.OutputNumbers2(numbers, 13, "Thirteen"));
         }
     }
 }
