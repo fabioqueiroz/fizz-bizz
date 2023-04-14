@@ -42,12 +42,6 @@ namespace FizzBizz
 
         public static string OutputWord(int number)
         {
-            //if (number.IsMultipleOf(3) && number.IsMultipleOf(5)) return nameof(OutputEnum.FizzBuzz);
-            //if (number.IsMultipleOf(7)) return nameof(OutputEnum.Woof);
-            //if (number.IsMultipleOf(5)) return nameof(OutputEnum.Buzz);
-            //if (number.IsMultipleOf(3)) return nameof(OutputEnum.Fizz);
-
-            //return number.ToString();
             return _functionalSelector.First(x => x.Predicate(number)).Output(number);
         }
 
