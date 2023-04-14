@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace FizzBizz.Utils
 {
-    public enum OutputEnum
+    public static class SolutionExtensions
     {
-        Fizz,
-        Buzz,
-        Woof,
-        FizzBuzz
+        public static bool IsMultipleOf(this int number, int input)
+            => number % input == 0;
     }
 }
