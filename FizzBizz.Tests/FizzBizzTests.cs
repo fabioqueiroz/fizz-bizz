@@ -103,5 +103,46 @@ namespace FizzBizz.Tests
             // Assert
             result.Should().Be(output);
         }
+
+        [Fact]
+        public void WhenCalled_ReturnsTheSumOfNumbers()
+        {
+            // Arrange
+            var numbers = new int[] { 1, 2, 3, 4, 5 };
+
+            // Act
+            var result = Solution.SumValuesWithAgregate(numbers);
+
+            //Assert
+            result.Should().Be(15);
+        }
+
+        [Theory]
+        [InlineData(2, 17)]
+        [InlineData(5, 20)]
+        public void WhenCalled_ReturnsTheIncreasedSumOfNumbers(int increment, int total)
+        {
+            // Arrange
+            var numbers = new int[] { 1, 2, 3, 4, 5 };
+
+            // Act
+            var result = Solution.SumIncreasedValuesWithAgregate(increment, numbers);
+
+            //Assert
+            result.Should().Be(total);
+        }
+
+        [Fact]
+        public void WhenCalled_ReturnsStringWithLetters()
+        {
+            // Arrange
+            var letters = new string[] { "A", "B", "C", "D", "E" };
+
+            // Act
+            var result = Solution.FormatLettersOutput(letters);
+
+            //Assert
+            result.Should().Be("A, B, C, D, E");
+        }
     }
 }

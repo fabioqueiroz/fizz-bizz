@@ -42,10 +42,11 @@ namespace FizzBizz
         }
 
         public static string OutputNumbers2(int[] numbers, int ruleNumber = 0, string ruleMessage = null)
-        {
-            var numberStringValues = MapNumbersToStringValues(numbers.ToList(), ruleNumber, ruleMessage);
-            return string.Join(" ", numberStringValues);
-        }
+            => numbers.Aggregate(string.Empty, (output, nextNumber) =>
+            {
+                var numberAsString = GetStringValue(nextNumber, ruleNumber, ruleMessage);
+                return (output += " " + numberAsString).Trim();
+            });
 
         public static string OutputWord(int number)
         {
@@ -61,13 +62,6 @@ namespace FizzBizz
            new (x => true, x => x.ToString())
         };
 
-        private static List<string> MapNumbersToStringValues(List<int> numbers, int ruleNumber = 0, string ruleMessage = null)
-        {
-            var numberValues = new List<string>();
-            numbers.ForEach(number => numberValues.Add(GetStringValue(number, ruleNumber, ruleMessage)));
-            return numberValues;
-        }
-
         private static string GetStringValue(int number, int ruleNumber = 0, string ruleMessage = null)
             => new List<(Func<int, bool> Predicate, Func<int, int, string, string> Output)>
             {
@@ -77,5 +71,16 @@ namespace FizzBizz
                new (x => x.IsMultipleOf(3), (x, y, z) => nameof(OutputEnum.Fizz)),
                new (x => true, (x, y, z) => x.RuleChecker(y, z))
             }.First(x => x.Predicate(number)).Output(number, ruleNumber, ruleMessage);
+
+        public static string FormatLettersOutput(string[] letters)
+         => letters.Aggregate((output, nextLetter) => output += ", " + nextLetter);
+
+        public static int SumValuesWithAgregate(int[] numbers)
+            => numbers.Aggregate(SumValues);
+
+        public static int SumIncreasedValuesWithAgregate(int increment, int[] numbers)
+            => numbers.Aggregate(increment, SumValues);
+
+        private static int SumValues(int x, int y) => x + y;
     }
 }
